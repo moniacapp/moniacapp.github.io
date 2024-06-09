@@ -65,12 +65,14 @@ class ContactUs extends Component {
         <Header />
         <div className="contact-us">
           <h1>Feedback & Support</h1>
+          <label>Please fell a form below or send an email to </label><a href="mailto:support.moniac@icloud.com">support.moniac@icloud.com</a>
+          <div style={{"height": "20px"}}/>
           <form>
             <label>
               Message*
               <textarea
                 name="message"
-                placeholder="I'm a human. Please be nice."
+                placeholder="Describe your issue or feedback here"
                 value={this.state.message}
                 onChange={this.onTextInputChange}
               />
@@ -86,7 +88,7 @@ class ContactUs extends Component {
               />
             </label>
             <small>Only used for replying to you.</small>
-            <button type="submit" onClick={this.onSubmitClick}>Send Feedback</button>
+            <button type="submit" onClick={this.onSubmitClick}>Send Request</button>
           </form>
           {this.state.successMessage && <div className="success-message">{this.state.successMessage}</div>}
           {this.state.errorMessage && <div className="error-message">{this.state.errorMessage}</div>}
