@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="contact-us" element={<ContactUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
