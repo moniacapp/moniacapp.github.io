@@ -29,15 +29,34 @@ class ContactUs extends Component {
       email: this.state.email
     };
 
-    const data = { example: 'data' };
+    const body = {
+      "Messages":[
+          {
+              "From": {
+                  "Email": "moneytracker.development@gmail.com",
+                  "Name": "Me"
+              },
+              "To": [
+                  {
+                      "Email": "support.moniac@icloud.com",
+                      "Name": "You"
+                  }
+              ],
+              "Subject": "My first Mailjet Email!",
+              "TextPart": "Greetings from Mailjet!",
+              "HTMLPart": "<h3>Dear passenger 1, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!</h3><br />May the delivery force be with you!"
+          }
+      ]
+  }
 
-    fetch('https://api.mail.gw/domains', {
-      method: 'GET',
+    fetch('https://api.mailjet.com/v3.1/send', {
+      method: 'POST',
       headers: {
+        'Authorization': 'Basic MTNhYWQxMDVmYWJkZWU3ODM3ZGQ1NDZhYjcyZWUyNTY6NDcyMjM5M2M0MzBlNjAyNDAwZWQyYjhhY2JjODI4NWY=',
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
       },
-      // body: JSON.stringify(data)
+      body: JSON.stringify(body)
     })
       .then(response => {
         if (!response.ok) {
@@ -46,7 +65,7 @@ class ContactUs extends Component {
         return response.json();
       })
       .then(response => {
-        this.setState({email: response[0].domain})
+        this.setState({email: response});
       })
       .catch(error => console.error(error));
 
