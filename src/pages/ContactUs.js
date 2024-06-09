@@ -8,21 +8,28 @@ class ContactUs extends Component {
     super(props);
     this.state = {
       message: '',
-      email: ''
+      email: '',
+      successMessage: '',
+      errorMessage: ''
     };
   }
 
   onTextInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
+      successMessage: '',
+      errorMessage: ''
     });
   };
 
   onSubmitClick = (event) => {
     event.preventDefault();
 
-    console.warn('Sending email:', this.state);
+    if (!this.state.message || !this.state.email) {
+      this.setState({ errorMessage: 'Please fill all the fields', successMessage: '' });
+      return;
+    }
 
     const body = {
       "contactEmail": this.state.email,
@@ -40,8 +47,11 @@ class ContactUs extends Component {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        this.setState({ successMessage: 'Email sent successfully!', errorMessage: '' });
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        this.setState({ errorMessage: 'Failed to send email. Please try again.', successMessage: '' });
+      });
 
     this.setState({
       message: '',
@@ -78,6 +88,8 @@ class ContactUs extends Component {
             <small>Only used for replying to you.</small>
             <button type="submit" onClick={this.onSubmitClick}>Send Feedback</button>
           </form>
+          {this.state.successMessage && <div className="success-message">{this.state.successMessage}</div>}
+          {this.state.errorMessage && <div className="error-message">{this.state.errorMessage}</div>}
         </div>
       </>
     );
