@@ -24,37 +24,15 @@ class ContactUs extends Component {
 
     console.warn('Sending email:', this.state);
 
-    const templateParams = {
-      message: this.state.message,
-      email: this.state.email
-    };
-
     const body = {
-      "Messages":[
-          {
-              "From": {
-                  "Email": "moneytracker.development@gmail.com",
-                  "Name": "Me"
-              },
-              "To": [
-                  {
-                      "Email": "support.moniac@icloud.com",
-                      "Name": "You"
-                  }
-              ],
-              "Subject": "My first Mailjet Email!",
-              "TextPart": "Greetings from Mailjet!",
-              "HTMLPart": "<h3>Dear passenger 1, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!</h3><br />May the delivery force be with you!"
-          }
-      ]
-  }
+      "contactEmail": this.state.email,
+      "message": this.state.message
+    }
 
-    fetch('https://api.mailjet.com/v3.1/send', {
+    fetch('https://us-central1-cryptic-smile-425910-d6.cloudfunctions.net/send_support_email', {
       method: 'POST',
       headers: {
-        'Authorization': 'Basic MTNhYWQxMDVmYWJkZWU3ODM3ZGQ1NDZhYjcyZWUyNTY6NDcyMjM5M2M0MzBlNjAyNDAwZWQyYjhhY2JjODI4NWY=',
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
     })
@@ -62,10 +40,6 @@ class ContactUs extends Component {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json();
-      })
-      .then(response => {
-        this.setState({email: response});
       })
       .catch(error => console.error(error));
 

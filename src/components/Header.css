@@ -2,7 +2,10 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 20px 50px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #121212;
   color: white;
 }
