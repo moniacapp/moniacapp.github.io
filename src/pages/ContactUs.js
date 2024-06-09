@@ -29,6 +29,27 @@ class ContactUs extends Component {
       email: this.state.email
     };
 
+    const data = { example: 'data' };
+
+    fetch('https://api.mail.gw/domains', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      // body: JSON.stringify(data)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(response => {
+        this.setState({email: response[0].domain})
+      })
+      .catch(error => console.error(error));
+
     this.setState({
       message: '',
       email: ''
