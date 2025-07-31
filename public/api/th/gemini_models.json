@@ -1,0 +1,48 @@
+{
+  "models": [
+    {
+      "id": "gemini_2_5_pro",
+      "google_id": "gemini-2.5-pro",
+      "name": "Gemini 2.5 Pro",
+      "description": "Enhanced thinking and reasoning"
+    },
+    {
+      "id": "gemini_2_5_pro_min_think",
+      "google_id": "gemini-2.5-pro",
+      "name": "Gemini 2.5 Pro (minimal thinking)",
+      "description": "Enhanced thinking and reasoning, thinking restricted to minimal",
+      "thinkingBudget": 128
+    },
+    {
+      "id": "gemini_2_5_flash",
+      "google_id": "gemini-2.5-flash",
+      "name": "Gemini 2.5 Flash",
+      "description": "Adaptive thinking, cost efficiency"
+    },
+    {
+      "id": "gemini_2_5_flash_no_think",
+      "google_id": "gemini-2.5-flash",
+      "name": "Gemini 2.5 Flash (no thinking)",
+      "description": "Adaptive thinking, cost efficiency",
+      "thinkingBudget": 0
+    },
+    {
+      "id": "gemini_2_5_flash_lite",
+      "google_id": "gemini-2.5-flash-lite",
+      "name": "Gemini 2.5 Flash-Lite",
+      "description": "Most cost-efficient model supporting high throughput"
+    },
+    {
+      "id": "gemini_2_0_flash",
+      "google_id": "gemini-2.0-flash",
+      "name": "Gemini 2.0 Flash",
+      "description": "Next generation features, speed"
+    },
+    {
+      "id": "gemini_2_0_flash_lite",
+      "google_id": "gemini-2.0-flash-lite",
+      "name": "Gemini 2.0 Flash-Lite",
+      "description": "Cost efficiency and low latency"
+    }
+  ]
+}
